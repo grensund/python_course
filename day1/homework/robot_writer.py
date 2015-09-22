@@ -1,21 +1,29 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
-""" Se robot_writer.md för instruktioner
-"""
+total_unemployment_2009 = 8.6
+total_unemployment_2014 = 7.0
+total_diff = total_unemployment_2014 - total_unemployment_2009
 
-total_unemployment_2009 = 5.9
-total_unemployment_2014 = 8.0
 
 def write_story(municipality, unemployment_2009, unemployment_2014):
-    text = "Gör mig till en notis"
-    print("Nu har jag löst uppfiften!")
-    print(text)
-    # Skriv kod här!
+	local_diff = unemployment_2014 - unemployment_2009
+	text = "För %s låg arbetslösheten ifjol på %s procent." % (municipality, unemployment_2014)
+	print(text)
+	
+	if local_diff > 0.0:
+		print("Det var en ökning med %s procentenheter sedan 2009.") % (abs(local_diff))
+	elif local_diff < 0.0:
+	   	print("Det var en minskning med %s procentenheter sedan 2009.") % (abs(local_diff))
+	elif local_diff == 0.0:
+		print("Det var faktiskt ingen skillnad alls från 2009.")
+	
+	if total_diff > local_diff:
+		print("Jämfört med resten av landet har %s klarat sig bättre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
+	elif total_diff < local_diff:
+		print("Jämfört med resten av landet har %s klarat sig sämre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
+	elif total_diff == local_diff:
+		print("Jämfört med resten av landet har %s klarat sig sämre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
 
-
-
-""" Testa roboten!
-"""
 
 write_story("Stockholm", 7.1, 6.6) 
 print("**************")
@@ -25,6 +33,11 @@ print("**************")
 
 write_story("Lessebo", 9.5, 13.2) 
 print("**************")
+
+write_story("Mora", 8.5, 8.5) 
+print("**************")
+
+
 
 """
 Källa: http://www.ekonomifakta.se/sv/Fakta/Regional-statistik/Din-kommun-i-siffror/
