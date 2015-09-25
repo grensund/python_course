@@ -1,7 +1,7 @@
 # coding: utf-8
 
 total_unemployment_2009 = 8.6
-total_unemployment_2014 = 7.0
+total_unemployment_2014 = 15.0
 total_diff = total_unemployment_2014 - total_unemployment_2009
 
 
@@ -18,11 +18,18 @@ def write_story(municipality, unemployment_2009, unemployment_2014):
 		print("Det var faktiskt ingen skillnad alls från 2009.")
 	
 	if total_diff > local_diff:
-		print("Jämfört med resten av landet har %s klarat sig bättre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
+		print("Jämfört med resten av landet har %s klarat sig bättre.") % (municipality)
 	elif total_diff < local_diff:
-		print("Jämfört med resten av landet har %s klarat sig sämre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
+		print("Jämfört med resten av landet har %s klarat sig sämre.") % (municipality)
 	elif total_diff == local_diff:
-		print("Jämfört med resten av landet har %s klarat sig sämre. I riket föll arbetslösheten med %s procentenheter.") % (municipality, abs(total_diff))
+		print("Jämfört med resten av landet har %s klarat sig sämre.") % (municipality)
+
+	if total_diff < 0.0:
+		print("I riket föll arbetslösheten med %s procentenheter.") % (abs(total_diff))
+	elif total_diff > 0.0:
+		print("I riket steg arbetslösheten med %s procentenheter.") % (abs(total_diff))
+	elif total_diff == 0.0:
+		print("I riket låg arbetslösheten på samma nivå för fem år sedan.")
 
 
 write_story("Stockholm", 7.1, 6.6) 
