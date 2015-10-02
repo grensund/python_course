@@ -12,5 +12,8 @@ count = 0
 
 # Skriv en for-loop här!
 
+for row in mps:
+	if "son, " in row:
+		count = count + 1
 
 print("Antal sonnare i riksdagen: %s" % count)
