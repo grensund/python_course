@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+
+jplusplus = [
+    {
+    	"namn": "Peter",
+    	"skostorlek": 42,
+    	"OS": "Mac"
+
+    },
+    {
+    	"namn": "Leo",
+    	"skostorlek": 42,
+    	"OS": "Linux"
+    },
+	{
+	    "namn": "Jens",
+	    "skostorlek": 45,
+	    "OS": "Mac"
+	}
+]
+
+
+for member in jplusplus:
+	print member

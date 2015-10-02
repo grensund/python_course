@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+
+def plusplus(tal_1, tal_2):
+	summa = tal_1 + tal_2
+	return summa
+
+
+def create_name(name_1, name_2):
+	#concatenate two names
+	fullname = name_1 + " " + name_2
+	return fullname
+
+resultat = plusplus(3, 4)
+print resultat
+
+a_name = create_name("Peter", "Grensund")
+print(a_name)
