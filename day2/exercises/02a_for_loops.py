@@ -2,14 +2,14 @@
 
 
 unicorns = [
-"Joachim Kerpner",
-"Nina Svanberg",
-"Johan Ronge",
-"Christian Holmén",
-"Fredrik Laurin",
-"Olle Carlsson",
-"Lolo Tode Palm",
-"Martin Jönsson"
+    "Joachim Kerpner",
+    "Nina Svanberg",
+    "Johan Ronge",
+    "Christian Holmén",
+    "Fredrik Laurin",
+    "Olle Carlsson",
+    "Lolo Tode Palm",
+    "Martin Jönsson"
 ]
 
 """
@@ -20,9 +20,10 @@ Gör en for-loop som skriver ut en numrerad deltagarlista.
 o.s.v.
 """
 
-counter = 1
+counter = 0
+
 for unicorn in unicorns:
-    # Skriv kod här!
-    print(unicorn)
+    counter = counter + 1
+    print "%s. %s" % (counter, unicorn)
 
 
