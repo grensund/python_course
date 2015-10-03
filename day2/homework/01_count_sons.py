@@ -59,6 +59,7 @@ total_m = total_m - total_mp
 total_s = total_s - total_sd
 	
 # Här har jag använt "or" i if-satsen för att kombinera två stycken villkor.
+# Dubbelräkningen av mp och sd subtraherade från m respektive s, se även ovan.
 for row in data:
 	if "son," in row["name"] or "son ," in row["name"]:
 		counter_son_names = counter_son_names + 1
@@ -81,7 +82,6 @@ for row in data:
 counter_m = counter_m - counter_mp
 counter_s = counter_s - counter_sd
 
-# Dubbelräkningen av mp och sd subtraherade från m respektive s.
 # Använde %d för att slippa decimaler
 print("Av %d ledamöter har %d son-namn" % (total_number_of_mps, counter_son_names))
 print("Antal moderater: %d (%d procent).\nAntal liberaler: %d (%d procent).\
