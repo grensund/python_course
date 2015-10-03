@@ -26,27 +26,18 @@ Idé: använd for-loop för varje parti tillsammans med if-sats
 
 """
 
-counter_fp = 0.0
-counter_c = 0.0
-counter_kd = 0.0
-counter_mp = 0.0
-counter_v = 0.0
-counter_m = 0.0
-counter_sd = 0.0
-counter_s = 0.0
-total_fp = 0.0
-total_c = 0.0
-total_kd = 0.0
-total_mp = 0.0
-total_v = 0.0
-total_m = 0.0
-total_sd = 0.0
-total_s = 0.0
+counter_fp, counter_c, counter_kd, counter_mp, \
+counter_v, counter_m, counter_sd, counter_s \
+= 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+
+total_fp, total_c, total_kd, total_mp, \
+total_v, total_m, total_sd, total_s \
+= 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 
 counter_son_names = 0.0
 total_number_of_mps = len(data)
 
-# Här har jag använt "or" i if-satsen för att kombinera två stycken villkor.
+# Loop för att plocka ut antal förekomster av respektive parti.
 for row in data:
 	if "FP" in row["party"]:
 		total_fp = total_fp + 1
@@ -64,8 +55,10 @@ for row in data:
 		total_v = total_v + 1
 	if "M" in row["party"]:
 		total_m = total_m + 1
+total_m = total_m - total_mp
+total_s = total_s - total_sd
 	
-
+# Här har jag använt "or" i if-satsen för att kombinera två stycken villkor.
 for row in data:
 	if "son," in row["name"] or "son ," in row["name"]:
 		counter_son_names = counter_son_names + 1
@@ -85,23 +78,17 @@ for row in data:
 			counter_v = counter_v + 1
 		if "M" in row["party"]:
 			counter_m = counter_m + 1
+counter_m = counter_m - counter_mp
+counter_s = counter_s - counter_sd
 
 # Dubbelräkningen av mp och sd subtraherade från m respektive s.
 # Använde %d för att slippa decimaler
 print("Av %d ledamöter har %d son-namn" % (total_number_of_mps, counter_son_names))
-print("Antal moderater: %d (%d procent).\
-	\nAntal liberaler: %d (%d procent).\
-	\nAntal centerpartister: %d (%d procent).\
-	\nAntal kristdemokrater: %d (%d procent).\
-	\nAntal sossar: %d (%d procent).\
-	\nAntal miljömuppar: %d (%d procent).\
-	\nAntal vpk:are: %d (%d procent).\
-	\nAntal sd:are: %d (%d procent).")\
-% (counter_m - counter_mp, ((counter_m - counter_mp) / (total_m - total_mp)) * 100, \
-	counter_fp, counter_fp / total_fp * 100, \
-	counter_c, counter_c / total_c * 100, \
-	counter_kd, counter_kd / total_kd * 100, \
-	counter_s - counter_sd, (counter_s - counter_sd) / (total_s - total_sd) * 100, \
-	counter_mp, counter_mp / total_mp * 100, \
-	counter_v, counter_v / total_v * 100, \
-	counter_sd, counter_sd / total_sd * 100)
+print("Antal moderater: %d (%d procent).\nAntal liberaler: %d (%d procent).\
+	\nAntal centerpartister: %d (%d procent).\nAntal kristdemokrater: %d (%d procent).\
+	\nAntal sossar: %d (%d procent).\nAntal miljömuppar: %d (%d procent).\
+	\nAntal vpk:are: %d (%d procent).\nAntal sd:are: %d (%d procent).")\
+% (counter_m, counter_m / total_m * 100, counter_fp, counter_fp / total_fp * 100, \
+	counter_c, counter_c / total_c * 100, counter_kd, counter_kd / total_kd * 100, \
+	counter_s, counter_s / total_s * 100, counter_mp, counter_mp / total_mp * 100, \
+	counter_v, counter_v / total_v * 100, counter_sd, counter_sd / total_sd * 100)
